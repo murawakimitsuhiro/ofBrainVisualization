@@ -15,6 +15,11 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 
+struct OSCMessageReceiver {
+    string address;
+    int* variablePointer;
+};
+
 class OSCManager {
 private:
     OSCManager() = default;
@@ -25,7 +30,7 @@ private:
     
     ofxOscReceiver receiver;
     
-    map<string, int> messageMap;
+    vector<OSCMessageReceiver> messageReceivers;
     
 public:
     OSCManager(const OSCManager&) = delete;
@@ -40,7 +45,9 @@ public:
     
     void setup();
     void update();
+    
     void dumpOSC(ofxOscMessage m);
+    void setMessageReceiver(OSCMessageReceiver messageReceiver);
 };
 
 #endif /* OSCManager_hpp */

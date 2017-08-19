@@ -18,8 +18,13 @@ void OSCManager::update() {
         ofxOscMessage m;
         receiver.getNextMessage(m);
         
-        dumpOSC(m);
-    }    
+        for (int i=0; i<messageReceivers.size(); i++) {
+            if (m.getAddress() == messageReceivers[i].address){
+                *messageReceivers[i].variablePointer = m.getArgAsInt32(0);
+            }
+        }
+        //dumpOSC(m);
+    }
 }
 
 void OSCManager::dumpOSC(ofxOscMessage m) {
@@ -35,4 +40,8 @@ void OSCManager::dumpOSC(ofxOscMessage m) {
             msg_string += m.getArgAsString(i);
     }
     cout << msg_string << endl;
+}
+
+void OSCManager::setMessageReceiver(OSCMessageReceiver messageReceiver) {
+    messageReceivers.push_back(messageReceiver);
 }

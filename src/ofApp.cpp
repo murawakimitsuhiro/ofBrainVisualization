@@ -2,6 +2,8 @@
 
 
 void ofApp::setup() {
+    OSCManager::get_instance().setup();
+    
     ofBackgroundHex(0x000000);
     ofSetFrameRate(30);
     ofEnableAlphaBlending();
@@ -32,7 +34,6 @@ void ofApp::setup() {
     secondLight.setDiffuseColor(initDifColor);
     secondLight.setSpecularColor(initSpeColor);
     
-    OSCManager::get_instance().setup();
     brain.setup();
 }
 

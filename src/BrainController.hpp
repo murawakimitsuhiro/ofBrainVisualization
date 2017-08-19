@@ -13,6 +13,7 @@
 
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
+#include "OSCManager.hpp"
 
 class BrainController {
     
@@ -24,6 +25,8 @@ public:
     void setup();
     void update();
     void draw();
+    
+    int gain;
 };
 
 #endif /* BrainController_hpp */

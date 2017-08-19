@@ -25,12 +25,19 @@ void BrainController::setup() {
             num++;
         }
     }
+    
+    OSCMessageReceiver gainReceiver;
+    gainReceiver.address = "/gain";
+    gainReceiver.variablePointer = &gain;
+    OSCManager::get_instance().setMessageReceiver(gainReceiver);
 }
 
 void BrainController::update() {
     for (int i = 0; i < modelNum; i++) {
         models[i].setScaleNormalization(false);
     }
+    
+    cout << "came now " << gain << endl;
 }
 
 /* call in camera rendering */
@@ -39,6 +46,5 @@ void BrainController::draw() {
     
     for (int i = 0; i < modelNum; i++) {
         models[i].drawFaces();
-        //models[i].drawWireframe();
     }
 }
