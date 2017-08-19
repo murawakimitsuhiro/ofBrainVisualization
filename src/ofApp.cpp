@@ -1,56 +1,60 @@
 #include "ofApp.h"
 
-//--------------------------------------------------------------
-void ofApp::setup(){
-    const string rightBrainModelPath = "model/brain-rh.stl";
-    const string leftBrainModelPath = "model/brain-lh.stl";
+
+void ofApp::setup() {
+    ofBackgroundHex(0x000000);
+    ofSetFrameRate(30);
+    ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableDepthTest();
+    glShadeModel(GL_SMOOTH);
+    ofEnableSeparateSpecularLight();
     
-    float scale = 0.5;
+//camera
+    cam.setDistance(250);
     
-    leftBrainModel.setScale(scale, scale, scale);
-    rightBrainModel.setScale(scale, scale, scale);
+//light setup
+    ofFloatColor initAmbColor = ofFloatColor(0.8, 0.8, 0.8,1.0);
+    ofFloatColor initDifColor = ofFloatColor(0.7, 0.7, 0.7);
+    ofFloatColor initSpeColor = ofFloatColor(0.6, 0.6,0.6);
     
-    leftBrainModel.loadModel(leftBrainModelPath);
-    rightBrainModel.loadModel(rightBrainModelPath);
+    light.enable();
+    light.setAreaLight(2000, 2000);
+    light.setPosition(100, 100, 100);
+    light.setAmbientColor(initAmbColor);
+    light.setDiffuseColor(initDifColor);
+    light.setSpecularColor(initSpeColor);
     
-    //ofEnableDepthTest();
+    secondLight.enable();
+    secondLight.setAreaLight(2000, 2000);
+    secondLight.setPosition(100, -100, 100);
+    secondLight.setAmbientColor(initAmbColor);
+    secondLight.setDiffuseColor(initDifColor);
+    secondLight.setSpecularColor(initSpeColor);
+    
+    brain.setup();
 }
 
-//--------------------------------------------------------------
-void ofApp::update(){
-    leftBrainModel.update();
-    rightBrainModel.update();
-    
-    camera.lookAt(ofVec3f(0,0,0));
-    camera.setPosition(500*cos(ofGetElapsedTimef()/10), 200, 500*sin(ofGetElapsedTimef()/10));
+void ofApp::update() {
+    brain.update();
 }
 
-//--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(0);
+    ofEnableDepthTest();
+    cam.begin();
     
-    ofSetColor(255, 30);
+    ofPushStyle();
     
-    ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    camera.begin();
-    ofRotateX(-90);
-    ofSetLineWidth(1);
+    brain.draw();
     
-    rightBrainModel.drawVertices();
-    rightBrainModel.drawFaces();
+    ofPopStyle();
     
-    leftBrainModel.drawVertices();
-    leftBrainModel.drawFaces();
+    cam.end();
     
-    camera.end();
-    ofPopMatrix();
-    
-    ofSetColor(255, 255, 255, 255);
-    string info = ofToString(ofGetFrameRate(), 2);
-    ofDrawBitmapString(info, 30, 30);
+    ofDisableDepthTest();
 }
 
+//
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     

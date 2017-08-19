@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 
+#include "BrainController.hpp"
+
 class ofApp : public ofBaseApp{
     
 public:
@@ -24,7 +26,9 @@ public:
     
 private:
     
-    ofCamera camera;
-    ofxAssimpModelLoader rightBrainModel;
-    ofxAssimpModelLoader leftBrainModel;
+    ofEasyCam cam;
+    ofLight light;
+    ofLight secondLight;
+    
+    BrainController brain;
 };
