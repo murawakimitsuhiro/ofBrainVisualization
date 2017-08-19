@@ -21,6 +21,8 @@ private:
     static const int modelNum = 152;
     ofxAssimpModelLoader models[modelNum];
     
+    void setupOSCMessageReceive();
+    
 public:
     void setup();
     void update();

@@ -26,25 +26,27 @@ void BrainController::setup() {
         }
     }
     
-    OSCMessageReceiver gainReceiver;
-    gainReceiver.address = "/gain";
-    gainReceiver.variablePointer = &gain;
-    OSCManager::get_instance().setMessageReceiver(gainReceiver);
+    setupOSCMessageReceive();
+}
+
+//LINK OSC
+void BrainController::setupOSCMessageReceive() {
+    /* /gain to gain */
+    OSCManager::get_instance().setMessageReceiver("/gain", gain);
 }
 
 void BrainController::update() {
     for (int i = 0; i < modelNum; i++) {
         models[i].setScaleNormalization(false);
     }
-    
-    cout << "came now " << gain << endl;
 }
 
 /* call in camera rendering */
 void BrainController::draw() {
-    ofSetColor(100, 100, 100, 255);
+    //ofSetColor(100, 100, 100, 50*gain);
+    ofSetColor(255, gain);
     
     for (int i = 0; i < modelNum; i++) {
-        models[i].drawFaces();
+        models[i].draw(OF_MESH_FILL);
     }
 }

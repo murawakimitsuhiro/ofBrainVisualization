@@ -47,7 +47,7 @@ public:
     void update();
     
     void dumpOSC(ofxOscMessage m);
-    void setMessageReceiver(OSCMessageReceiver messageReceiver);
+    void setMessageReceiver(string address, int& variable);
 };
 
 #endif /* OSCManager_hpp */

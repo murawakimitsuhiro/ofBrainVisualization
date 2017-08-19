@@ -42,6 +42,10 @@ void OSCManager::dumpOSC(ofxOscMessage m) {
     cout << msg_string << endl;
 }
 
-void OSCManager::setMessageReceiver(OSCMessageReceiver messageReceiver) {
+void OSCManager::setMessageReceiver(string address, int& variable) {
+    OSCMessageReceiver messageReceiver;
+    messageReceiver.address = address;
+    messageReceiver.variablePointer = &variable;
+    
     messageReceivers.push_back(messageReceiver);
 }
