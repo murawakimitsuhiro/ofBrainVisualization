@@ -32,23 +32,24 @@ void ofApp::setup() {
     secondLight.setDiffuseColor(initDifColor);
     secondLight.setSpecularColor(initSpeColor);
     
+    OSCManager::get_instance().setup();
     brain.setup();
 }
 
 void ofApp::update() {
+    OSCManager::get_instance().update();
     brain.update();
 }
 
 void ofApp::draw(){
     ofEnableDepthTest();
+    
     cam.begin();
-    
     ofPushStyle();
-    
+   
     brain.draw();
     
     ofPopStyle();
-    
     cam.end();
     
     ofDisableDepthTest();
@@ -62,7 +63,6 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    
 }
 
 //--------------------------------------------------------------

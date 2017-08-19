@@ -4,6 +4,7 @@
 #include "ofxAssimpModelLoader.h"
 
 #include "BrainController.hpp"
+#include "OSCManager.hpp"
 
 class ofApp : public ofBaseApp{
     
