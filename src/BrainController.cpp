@@ -46,6 +46,18 @@ void BrainController::draw() {
     ofSetColor(255, gain*2.5);
     
     for (int i = 0; i < modelNum; i++) {
+        if (OSCManager::get_instance().fft[i] > 0.01) {
+            ofSetColor(0, 255, 0, 30);
+        }
+        
+        if (OSCManager::get_instance().fft[i] > 0.025) {
+            ofSetColor(0, 0, 255, 30);
+        }
+        
+        if (OSCManager::get_instance().fft[i] > 0.05) {
+            ofSetColor(255, 0, 0, 30);
+        }
+        
         models[i].drawWireframe();
     }
 }
