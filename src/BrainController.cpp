@@ -25,7 +25,6 @@ void BrainController::setup() {
             num++;
         }
     }
-    
     setupOSCMessageReceive();
 }
 
@@ -44,9 +43,9 @@ void BrainController::update() {
 /* call in camera rendering */
 void BrainController::draw() {
     //ofSetColor(100, 100, 100, 50*gain);
-    ofSetColor(255, gain);
+    ofSetColor(255, gain*2.5);
     
     for (int i = 0; i < modelNum; i++) {
-        models[i].draw(OF_MESH_FILL);
+        models[i].drawWireframe();
     }
 }

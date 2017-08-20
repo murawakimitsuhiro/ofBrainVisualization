@@ -23,12 +23,13 @@ private:
     
     void setupOSCMessageReceive();
     
+    int gain;
+    
 public:
     void setup();
     void update();
     void draw();
     
-    int gain;
 };
 
 #endif /* BrainController_hpp */

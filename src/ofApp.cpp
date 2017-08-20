@@ -15,7 +15,7 @@ void ofApp::setup() {
 //camera
     cam.setDistance(250);
     
-//light setup
+/*light setup
     ofFloatColor initAmbColor = ofFloatColor(0.8, 0.8, 0.8,1.0);
     ofFloatColor initDifColor = ofFloatColor(0.7, 0.7, 0.7);
     ofFloatColor initSpeColor = ofFloatColor(0.6, 0.6,0.6);
@@ -33,12 +33,20 @@ void ofApp::setup() {
     secondLight.setAmbientColor(initAmbColor);
     secondLight.setDiffuseColor(initDifColor);
     secondLight.setSpecularColor(initSpeColor);
+ */
     
     brain.setup();
+    
 }
 
 void ofApp::update() {
     OSCManager::get_instance().update();
+    
+    cam.lookAt(ofVec3f(0,0,0));
+    //cam.setPosition(300*cos(ofGetElapsedTimef()/10), 0, 300*sin(ofGetElapsedTimef()/10));
+    cam.setPosition(300*cos(ofGetElapsedTimef()/10), 300*sin(ofGetElapsedTimef()/10), 0);
+    cam.rotate(270, cam.getLookAtDir());
+    
     brain.update();
 }
 

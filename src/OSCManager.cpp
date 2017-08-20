@@ -21,8 +21,16 @@ void OSCManager::update() {
         for (int i=0; i<messageReceivers.size(); i++) {
             if (m.getAddress() == messageReceivers[i].address){
                 *messageReceivers[i].variablePointer = m.getArgAsInt32(0);
+                continue;
+            }
+            
+            if (m.getAddress() == "/fft") {
+                for (int i = 0; i < 255; i++) {
+                    fft[i] = m.getArgAsFloat(i);
+                }
             }
         }
+        
         //dumpOSC(m);
     }
 }

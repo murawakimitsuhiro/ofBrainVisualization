@@ -32,4 +32,8 @@ private:
     ofLight secondLight;
     
     BrainController brain;
+    
+    int x;
+    int y;
+    int z;
 };

@@ -43,6 +43,8 @@ public:
         return inst;
     }
     
+    float fft[512];
+    
     void setup();
     void update();
     
