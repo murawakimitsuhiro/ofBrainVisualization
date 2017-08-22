@@ -15,13 +15,13 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "OSCManager.hpp"
-#include "ofDisassemblyModel.hpp"
+#include "ofDecomposeModel.hpp"
 
 class BrainController {
     
 private:
     static const int modelNum = 152;
-    ofDisassemblyModel models[modelNum];
+    ofDecomposeModel models[modelNum];
     
     void setupOSCMessageReceive();
     

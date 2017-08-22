@@ -39,6 +39,10 @@ void BrainController::update() {
     for (int i = 0; i < modelNum; i++) {
         models[i].setScaleNormalization(false);
     }
+    
+    if (5 < ofGetElapsedTimef()) {
+        models[debugTarget].startDecompose();
+    }
 }
 
 /* call in camera rendering */
@@ -59,15 +63,17 @@ void BrainController::draw() {
             ofSetColor(255, 0, 0, 30);
         } */
         
+        /*
         if (i == debugTarget) {
             ofSetColor(255, 0, 0, 30);
             
             models[i].drawCustom();
             //drawWithMesh(models[i]);
             continue;
-        }
+        }*/
         
-        models[i].drawWireframe();
+        
+        models[i].draw();
     }
 }
 
