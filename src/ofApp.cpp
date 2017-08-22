@@ -36,14 +36,16 @@ void ofApp::setup() {
  */
     
     brain.setup();
+    
+    OSCManager::get_instance().setMessageReceiver("/camera_angle", cameraAngle);
 }
 
 void ofApp::update() {
     OSCManager::get_instance().update();
     
     cam.lookAt(ofVec3f(0,0,0));
-    //cam.setPosition(300*cos(ofGetElapsedTimef()/10), 0, 300*sin(ofGetElapsedTimef()/10));
-    cam.setPosition(300*cos(ofGetElapsedTimef()/10), 300*sin(ofGetElapsedTimef()/10), 0);
+    //cam.setPosition(300*cos(ofGetElapsedTimef()/10), 300*sin(ofGetElapsedTimef()/10), 0);
+    cam.setPosition(300*cos(cameraAngle/10), 300*sin(cameraAngle/10), 0);
     cam.rotate(270, cam.getLookAtDir());
     
     brain.update();

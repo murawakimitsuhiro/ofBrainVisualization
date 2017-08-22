@@ -33,7 +33,5 @@ private:
     
     BrainController brain;
     
-    int x;
-    int y;
-    int z;
+    int cameraAngle;
 };

@@ -15,22 +15,24 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "OSCManager.hpp"
+#include "ofDisassemblyModel.hpp"
 
 class BrainController {
     
 private:
     static const int modelNum = 152;
-    ofxAssimpModelLoader models[modelNum];
+    ofDisassemblyModel models[modelNum];
     
     void setupOSCMessageReceive();
     
     int gain;
+    int debugTarget;
     
 public:
     void setup();
     void update();
     void draw();
-    
+    void drawWithMesh(ofxAssimpModelLoader mesh);
 };
 
 #endif /* BrainController_hpp */
