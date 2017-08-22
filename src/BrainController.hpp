@@ -10,6 +10,7 @@
 #define BrainController_hpp
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"

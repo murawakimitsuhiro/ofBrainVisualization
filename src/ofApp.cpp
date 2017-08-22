@@ -36,7 +36,6 @@ void ofApp::setup() {
  */
     
     brain.setup();
-    
 }
 
 void ofApp::update() {

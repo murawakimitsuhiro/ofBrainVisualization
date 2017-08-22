@@ -9,7 +9,7 @@
 #include "BrainController.hpp"
 
 void BrainController::setup() {
-    ifstream ifs("/Users/murawakimitsuhiro/Documents/_Xcode_Project/SDK_Library/of_v0.9.8_osx_release/apps/Brain-Fu_k/bin/data/model/model_file_name_list.txt");
+    ifstream ifs("../../../data/model/model_file_name_list.txt");
     string buf;
     string dir = "model/";
     
@@ -42,7 +42,6 @@ void BrainController::update() {
 
 /* call in camera rendering */
 void BrainController::draw() {
-    //ofSetColor(100, 100, 100, 50*gain);
     ofSetColor(255, gain*2.5);
     
     for (int i = 0; i < modelNum; i++) {
