@@ -29,6 +29,13 @@ void OSCManager::update() {
                     fft[i] = m.getArgAsFloat(i);
                 }
             }
+            
+            /* Open_BCIからくる16chの脳波データ */
+            if (m.getAddress() == "/of") {
+                for (int i = 0; i < 16; i++) {
+                    bci[i] = m.getArgAsFloat(i);
+                }
+            }
         }
         
         //dumpOSC(m);

@@ -16,15 +16,20 @@
 #include "ofxAssimpModelLoader.h"
 #include "OSCManager.hpp"
 #include "ofDecomposeModel.hpp"
+#include "BrainModelData.h"
+//#include "BrainModelRersource.hpp"
 
 class BrainController {
     
 private:
-    static const int modelNum = 152;
-    ofDecomposeModel models[modelNum];
+    ofDecomposeModel models[BrainModelData::modelNum];
+    int nextDecomposeNum = 0;
     
     void setupOSCMessageReceive();
+    int isLearning = 0;
+    int wasStart = 0;
     
+    //debug
     int gain;
     int debugTarget;
     

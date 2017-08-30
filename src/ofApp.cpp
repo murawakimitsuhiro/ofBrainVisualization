@@ -43,9 +43,17 @@ void ofApp::setup() {
 void ofApp::update() {
     OSCManager::get_instance().update();
     
+    float cosPos = cos(ofGetElapsedTimef()/10);
+    float sinPos = sin(ofGetElapsedTimef()/10);
+    
     cam.lookAt(ofVec3f(0,0,0));
     //cam.setPosition(300*cos(ofGetElapsedTimef()/10), 300*sin(ofGetElapsedTimef()/10), 0);
-    cam.setPosition(300*cos(cameraAngle/10), 300*sin(cameraAngle/10), 0);
+    if(cosPos > 0) {
+        cam.setPosition(300*cosPos, 300*sinPos, 0);
+    } else {
+        cam.setPosition(-300*cosPos, 300*sinPos, 0);
+    }
+    
     cam.rotate(270, cam.getLookAtDir());
     
     brain.update();
@@ -53,6 +61,8 @@ void ofApp::update() {
 
 void ofApp::draw(){
     ofEnableDepthTest();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     cam.begin();
     ofPushStyle();

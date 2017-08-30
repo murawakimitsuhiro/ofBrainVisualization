@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 79.0, 883.0, 749.0 ],
+		"rect" : [ 34.0, 79.0, 709.0, 749.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,42 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 95.0, 486.0, 132.0, 22.0 ],
+					"style" : "",
+					"text" : "prepend /debug_target"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "live.slider",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 95.0, 251.5, 53.0, 203.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "live.slider",
+							"parameter_shortname" : "live.slider",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 0
+						}
+
+					}
+,
+					"varname" : "live.slider"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-28",
 					"linecount" : 4,
@@ -457,8 +493,7 @@
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "signal" ],
+					"numoutlets" : 0,
 					"patching_rect" : [ 660.0, 80.0, 104.0, 22.0 ],
 					"style" : "",
 					"text" : "pfft~ fftamp 512 1"
@@ -480,20 +515,6 @@
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 1 ],
-					"source" : [ "obj-1", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-10", 0 ]
@@ -569,6 +590,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-19", 0 ]
 				}
 
 			}
@@ -677,17 +712,11 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-13" : [ "live.gain~", "live.gain~", 0 ]
+			"obj-13" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-18" : [ "live.slider", "live.slider", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "fftamp.maxpat",
-				"bootpath" : "~/Downloads/fft_sample",
-				"patcherrelativepath" : "../../../../../../Downloads/fft_sample",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "pfft_loadme.maxpat",
 				"bootpath" : "C74:/help/msp",
 				"type" : "JSON",

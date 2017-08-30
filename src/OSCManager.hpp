@@ -44,6 +44,7 @@ public:
     }
     
     float fft[512];
+    float bci[16];
     
     void setup();
     void update();

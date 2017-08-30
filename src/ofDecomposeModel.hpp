@@ -26,14 +26,18 @@ private:
     
     ofVbo vbo;
     vector<ofVec3f> vectors;
+    vector<ofVec3f> speeds;
     vector<ofFloatColor> colors;
     
     void drawSolid();
     void drawDecomposing();
     
 public:
+    void update();
     void draw();
     void startDecompose();
+    void setStateSolid();
 };
 
 #endif /* ofDisassemblyModel_hpp */
+
