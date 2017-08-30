@@ -18,6 +18,9 @@ void BrainController::setup() {
     setupOSCMessageReceive();
 }
 
+void BrainController::reload() {
+}
+
 //LINK OSC
 void BrainController::setupOSCMessageReceive() {
     /* /gain to gain */
@@ -32,18 +35,21 @@ void BrainController::update() {
         models[i].update();
     }
     
+    /*
     if (wasStart == 0) {
         return;
-    }
+    }*/
     
     //decomposed by time
-    if (isLearning > 0 && nextDecomposeNum/* * 3*/ - int(ofGetElapsedTimef()) < 0) {
+    if ((nextDecomposeNum+decomposeCount*BrainModelData::modelNum) * 0.3 - int(ofGetElapsedTimef()) < 0) {
+//    if (isLearning > 0 && nextDecomposeNum/* * 3*/ - int(ofGetElapsedTimef()) < 0) {
         models[nextDecomposeNum].startDecompose();
         
         if (nextDecomposeNum == BrainModelData::modelNum - 10) {
             nextDecomposeNum = 0;
+            decomposeCount++;
             for (int i=0; i<BrainModelData::modelNum; i++) {
-                models[i].setStateSolid();
+                models[i].reset();
             }
         } else {
             nextDecomposeNum++;

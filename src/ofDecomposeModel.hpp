@@ -37,6 +37,9 @@ public:
     void draw();
     void startDecompose();
     void setStateSolid();
+    
+    void reset();
+    int decomposeCount = 0;
 };
 
 #endif /* ofDisassemblyModel_hpp */

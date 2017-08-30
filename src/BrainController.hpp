@@ -38,6 +38,9 @@ public:
     void update();
     void draw();
     void drawWithMesh(ofxAssimpModelLoader mesh);
+    void reload();
+    
+    int decomposeCount = 0;
 };
 
 #endif /* BrainController_hpp */
