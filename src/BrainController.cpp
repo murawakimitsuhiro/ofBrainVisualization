@@ -35,14 +35,13 @@ void BrainController::update() {
         models[i].update();
     }
     
-    /*
     if (wasStart == 0) {
         return;
-    }*/
+    }
     
     //decomposed by time
-    if ((nextDecomposeNum+decomposeCount*BrainModelData::modelNum) * 0.3 - int(ofGetElapsedTimef()) < 0) {
-//    if (isLearning > 0 && nextDecomposeNum/* * 3*/ - int(ofGetElapsedTimef()) < 0) {
+    if (isLearning > 0 && (nextDecomposeNum+decomposeCount*BrainModelData::modelNum) - int(ofGetElapsedTimef()) < 0) {
+//    if (islearning > 0 && nextDecomposeNum/* * 3*/ - int(ofGetElapsedTimef()) < 0) {
         models[nextDecomposeNum].startDecompose();
         
         if (nextDecomposeNum == BrainModelData::modelNum - 10) {
